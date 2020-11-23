@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import pet, { ANIMALS } from "@frontendmasters/pet";
+import Results from "./Results";
 import useDropdown from "./useDropdown";
 
 // delete the animal and breed useState calls
@@ -15,7 +16,7 @@ const SearchParams = () => {
   const [pets, setPets] = useState([]);
 
   async function requestPets() {
-    const { animals } = await pet.animal({
+    const { animals } = await pet.animals({
       location,
       breed,
       type: animal,
@@ -54,6 +55,7 @@ const SearchParams = () => {
         <BreedDropdown />
         <button>Submit</button>
       </form>
+      <Results pets={pets} />
     </div>
   );
 };
